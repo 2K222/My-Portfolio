@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mr.Akshay Salagare's Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {font-family: "Montserrat", sans-serif}
+        .w3-row-padding img {margin-bottom: 12px}
+        .w3-sidebar {width: 200px; background: #222;}
+        #main {margin-left: 200px}
+        @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+        .w3-sidebar a {padding: 20px}
+        .project-details {display: none;}
+        body {
+            background-image: url('images/circuit-board.jpg'); /* Ensure the path is correct */
+            background-size: cover;
+            background-attachment: fixed;
+            background-color: transparent; /* Ensures no background color overrides the image */
+            color: white; /* Ensures text is readable */
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .blink {
+            animation: blink 1s linear 3;
+        }
+		.signature-style {
+            font-family: 'Pacifico', cursive; /* Add a signature style font */
+            color: #f8f8ff; /* Pale white color */
+            font-size: 2em;
+            font-style: italic;
+        }
+		.info-btn {
+        background: none;
+        border: none;
+        color: #00d1b2; /* Vibrant color for buttons */
+        cursor: pointer;
+        font-size: 1em;
+        text-align: left;
+        padding: 0;
+        transition: color 0.3s;
+    }
+    
+    .info-btn:hover {
+        color: #ffd700; /* Gold color on hover */
+    }
+    
+    .drawer-info {
+        display: none;
+        padding: 10px;
+        background-color: #333;
+        border-left: 4px solid #00d1b2; /* Matching border color */
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+	.flip-card {
+        background-color: transparent;
+        width: 100%;
+        height: 200px;
+        perspective: 1000px;
+    }
+
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 10px;
+    }
+
+    .flip-card-front {
+        background-color: #444;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .flip-card-back {
+        background-color: #333;
+        color: white;
+        transform: rotateY(180deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .flip-card h3 {
+        margin: 0;
+    }
+
+    .flip-card p {
+        margin: 10px;
+    }
+	</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+    <a href="#home" class="w3-bar-item w3-button w3-padding-large w3-black">
+        <i class="fa fa-home w3-xxlarge"></i>
+        <p>HOME</p>
+    </a>
+    <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-address-card w3-xxlarge"></i>
+        <p>ABOUT</p>
+    </a>
+    <a href="#skills" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-cogs w3-xxlarge"></i>
+        <p>SKILLS</p>
+     </a>
+    <a href="#projects" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-tasks w3-xxlarge"></i>
+        <p>PROJECTS</p>
+    </a>
+    <a href="#experties" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-lightbulb w3-xxlarge"></i>
+        <p>MY EXPERTIES</p>
+    </a>
+    <a href="#hobbies" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-futbol w3-xxlarge"></i>
+        <p>MY HOBBIES</p>
+    </a>
+    <a href="#languages" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-language w3-xxlarge"></i>
+        <p>LANGUAGES</p>
+    </a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-envelope w3-xxlarge"></i>
+        <p>CONTACT</p>
+    </a>
+</nav>
+
+<!-- Navbar on small screens -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+    <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+        <a href="#home" class="w3-bar-item w3-button" style="width:20% !important">HOME</a>
+        <a href="#about" class="w3-bar-item w3-button" style="width:20% !important">ABOUT</a>
+        <a href="#skills" class="w3-bar-item w3-button" style="width:20% !important">SKILLS</a>
+        <a href="#technologies" class="w3-bar-item w3-button" style="width:20% !important">TECHNOLOGIES</a>
+        <a href="#projects" class="w3-bar-item w3-button" style="width:20% !important">PROJECTS</a>
+        <a href="#gallery" class="w3-bar-item w3-button" style="width:20% !important">GALLERY</a>
+        <a href="#experties" class="w3-bar-item w3-button" style="width:20% !important">MY EXPERTIES</a>
+        <a href="#hobbies" class="w3-bar-item w3-button" style="width:20% !important">MY HOBBIES</a>
+        <a href="#languages" class="w3-bar-item w3-button" style="width:20% !important">LANGUAGES</a>
+        <a href="#contact" class="w3-bar-item w3-button" style="width:20% !important">CONTACT</a>
+    </div>
+</div>
+
+
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+    <!-- Home Section -->
+    <header class="w3-container w3-padding-32 w3-center" id="home">
+        <h1 class="w3-jumbo">Mr.Akshay Salagare</h1>
+        <p class="w3-large">Welcome to My Portfolio</p>
+        <p>Hi there! I'm Akshay Salagare, an Software Test Engineer.</p>
+    </header>
+
+    <!-- About Section -->
+    <div class="w3-content w3-justify w3-text-#f8f8ff w3-padding-64" id="about">
+        <h2 class="w3-text-#f8f8ff">About Me</h2>
+        <hr style="width:200px" class="w3-opacity">
+        <p>
+			I am passionate about develop and utilize my skills to work in a creative and challenging environment. Goal to achieve a good position by doing satisfying work in IT field, strongly focused to complete thetasks in fast – faced environment.
+        </p>
+		<p>
+            I am a dedicated and enthusiastic Software Test Engineer with a strong background in electronics and communication engineering. My journey began with a Bachelor's degree from Hirasugar Institute of technology Nidasoshi.
+        </p>
+        <p>
+            As a professional, I am committed to continuous learning and growth. I have pursued professional training in Software Testing from Qspiders Basavangudi Bengaluru.  In Manual Testing, I am proficient in SDLC, STLC, Functional Testing, Integration Testing, System Testing, Regression Testing, and Defect Life Cycle Management. I have hands-on experience in writing test plans, test cases, and test scenarios to ensure software quality.I am also familiar with Agile Methodology, particularly Scrum, and have a good understanding of Sprint Planning, Daily Scrum Meetings, and Sprint Retrospectives. In SQL, I have expertise in DDL, DML, TCL, DCL, and DQL, along with joins, subqueries, and functions, which help in data validation and backend testing. Additionally, I have a strong foundation in Core Java, with knowledge of OOPs concepts, Upcasting & Downcasting, Constructors, and Interfaces. In Automation Testing using Selenium, I have worked on locators, XPath, handling multiple elements, pop-ups, property files, Excel files, list boxes, and Action class. I am also familiar with TestNG for writing test scripts and generating reports. Apart from my technical skills, I am a quick learner, detail-oriented, and passionate about software quality assurance. I am looking for an opportunity where I can apply my skills and contribute to the success of a dynamic team.
+        </p>
+    </div>
+	
+<!-- Skills and Tools Section -->
+<div class="w3-content w3-justify w3-text-grey w3-padding-64" id="skills">
+    <h2 class="w3-text-light-grey">Technical Skills</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div class="w3-row-padding">
+        <!-- Programming Languages -->
+        <div class="w3-col m6">
+            <h3 class="w3-text-light-grey"><i class="fa fa-code w3-margin-right"></i>Programming Languages</h3>
+            <ul class="w3-ul w3-card-4 w3-hover-shadow">
+                <li class="w3-padding-16">
+                    <button class="info-btn" onclick="toggleInfo('c')"><i class="fa fa-angle-right w3-margin-right"></i>Manual Testing</button>
+                    <p id="c-info" class="drawer-info">Manual testing is the process of manually checking software for defects without using automation tools. It helps ensure the application works correctly, is user-friendly, and meets requirements by executing test cases step by step.</p>
+                </li>
+                <li class="w3-padding-16">
+                    <button class="info-btn" onclick="toggleInfo('cpp')"><i class="fa fa-angle-right w3-margin-right"></i>Core Java</button>
+                    <p id="cpp-info" class="drawer-info">Core Java is the fundamental part of Java used for building applications and automation frameworks. It includes OOPs concepts, exception handling, and file handling, making it essential for automation testing with tools like Selenium.</p>
+                </li>
+                <li class="w3-padding-16">
+                    <button class="info-btn" onclick="toggleInfo('python')"><i class="fa fa-angle-right w3-margin-right"></i>Automation Testing</button>
+                    <p id="python-info" class="drawer-info">Automation testing uses software tools to execute test cases automatically, reducing manual effort and improving efficiency. It helps in faster, repeated testing and is commonly done using tools like Selenium, TestNG, and JUnit.</p>
+                </li>
+                <li class="w3-padding-16">
+                    <button class="info-btn" onclick="toggleInfo('assembly')"><i class="fa fa-angle-right w3-margin-right"></i>SQL</button>
+                    <p id="assembly-info" class="drawer-info">SQL is used in software testing to manage and validate database data. It helps testers retrieve, update, and verify records to ensure data integrity and accuracy in applications.</p>
+                </li>
+                <li class="w3-padding-16">
+                    <button class="info-btn" onclick="toggleInfo('embeddedC')"><i class="fa fa-angle-right w3-margin-right"></i>API</button>
+                    <p id="embeddedC-info" class="drawer-info">An API (Application Programming Interface) allows different software systems to communicate and exchange data. API testing ensures functionality, reliability, and security using tools like Postman and Rest Assured.</p>
+                </li>
+                <li class="w3-padding-16">
+                    <button class="info-btn" onclick="toggleInfo('htmlCss')"><i class="fa fa-angle-right w3-margin-right"></i>Tosca</button>
+                    <p id="htmlCss-info" class="drawer-info">Tosca is a popular automation testing tool used for end-to-end testing of web, mobile, and desktop applications. It provides scriptless automation, making it easy for testers to create and execute test cases without coding.</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Technical Tools -->
+        <div class="w3-col m6">
+            <h3 class="w3-text-light-grey"><i class="fa fa-wrench w3-margin-right"></i>Technical Tools</h3>
+            <ul class="w3-ul w3-card-4 w3-hover-shadow">
+                <li class="w3-padding-16">
+                    <button class="info-btn" onclick="toggleInfo('arduino')"><i class="fa fa-angle-right w3-margin-right"></i>Eclipse</button>
+                    <p id="arduino-info" class="drawer-info">Eclipse is a widely used IDE for Java development and automation testing, supporting tools like Selenium and TestNG.</p>
+                </li>
+                <li class="w3-padding-16">
+                    <button class="info-btn" onclick="toggleInfo('keil')"><i class="fa fa-angle-right w3-margin-right"></i>SQL Plus</button>
+                    <p id="keil-info" class="drawer-info">SQL*Plus is an Oracle command-line tool used to execute SQL queries, manage databases, and perform administrative tasks.</p>
+                </li>
+                <li class="w3-padding-16">
+                    <button class="info-btn" onclick="toggleInfo('waveShark')"><i class="fa fa-angle-right w3-margin-right"></i>Selenium</button>
+                    <p id="waveShark-info" class="drawer-info">Selenium is an open-source automation testing tool used for testing web applications across different browsers and platforms. It supports multiple programming languages like Java, Python, and C# for writing test scripts.</p>
+                </li>
+                <li class="w3-padding-16">
+                    <button class="info-btn" onclick="toggleInfo('stm32')"><i class="fa fa-angle-right w3-margin-right"></i>TestNg</button>
+                    <p id="stm32-info" class="drawer-info">TestNG is a testing framework for Java that helps in organizing, executing, and generating reports for automated test cases.</p>
+                </li>
+                <li class="w3-padding-16">
+                    <button class="info-btn" onclick="toggleInfo('proteus')"><i class="fa fa-angle-right w3-margin-right"></i>Postman</button>
+                    <p id="proteus-info" class="drawer-info">Postman is a popular API testing tool used to send requests, validate responses, and automate API testing.</p>
+                </li>
+                <li class="w3-padding-16">
+                    <button class="info-btn" onclick="toggleInfo('matlab')"><i class="fa fa-angle-right w3-margin-right"></i>Tosca</button>
+                    <p id="matlab-info" class="drawer-info">Tosca is a scriptless automation testing tool used for end-to-end testing of web, mobile, and desktop applications.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="w3-row-padding w3-margin-top">
+        <!-- Controllers -->
+        <div class="w3-col m6">
+    <!-- Projects Section -->
+    <div class="w3-padding-64 w3-content w3-text-#f8f8ff" id="projects">
+        <h2 class="w3-text-light-grey">Major Projects</h2>
+        <hr style="width:200px" class="w3-opacity">
+
+        <!-- Patient Health Monitoring System using IoT -->
+        <div class="w3-text-light-grey" id="project1">
+            <h3 class="w3-text-#f8f8ff">Sarasu Educational Website.</h3>
+            <button class="w3-button w3-light-grey w3-padding-large w3-section" onclick="toggleDetails('project1-details')">
+                <i class="fa fa-chevron-down"></i> View Details
+            </button>
+            <div id="project1-details" class="project-details" style="display: none;">
+                <p>
+                    Sarasu offers personalized online NEET exam preparation with adaptive learning, speed training, and detailed capability analysis. Programs include topic-based exams, mock tests, and cumulative assessments to enhance students' accuracy, speed, and subject mastery.
+                </p>
+                <p>
+                    Roles and Responsibilities:
+                    ➢ Analyzing the requirements mentioned in the Business requirement docs.
+                    ➢ Designing of Test scenarios or Test cases and Execution as per the requirements.
+                    ➢ Involved in Functionality testing, Integration testing and Regression testing.
+                    ➢ Involved in Compatibility testing on different Browsers and OS.
+                    ➢ Developing Business functions based on Test Cases by using descriptive programming.
+                    ➢ Executing Test Scripts in Selenium tool for Regression Testing Manual and Automation.
+                </p>
+            </div>
+        </div>
+       <!-- My Experties Section -->
+<div class="w3-content w3-justify w3-text-grey w3-padding-64" id="experties">
+    <h2 class="w3-text-light-grey">My Experties</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div class="w3-row-padding w3-margin-top">
+        <div class="w3-third w3-margin-bottom">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Programming</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Programming involves writing code to create software programs that perform specific tasks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Software Testing</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Software testing is the process of identifying bugs and ensuring software quality through manual or automated testing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hobbies Section -->
+<div class="w3-content w3-justify w3-text-grey w3-padding-64" id="hobbies">
+    <h2 class="w3-text-light-grey">My Hobbies</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div class="w3-row-padding w3-margin-top">
+        <div class="w3-third w3-margin-bottom">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Watching Movies</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Enjoy watching a variety of movies and web series for entertainment and relaxation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Photo Editing</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>enhances creativity and focus by engaging attention to detail and color precision.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Video editing</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Video editing boosts concentration by requiring focus on timing, transitions, and visual details for a polished final output.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Languages Section -->
+<div class="w3-content w3-justify w3-text-grey w3-padding-64" id="languages">
+    <h2 class="w3-text-light-grey">Languages</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div class="w3-row-padding w3-margin-top">
+        <div class="w3-third w3-margin-bottom">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Kannada</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Kannada is a Dravidian language spoken predominantly by people of Karnataka in southwestern India.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Hindi</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Hindi is an Indo-Aryan language spoken mainly in India, and is the lingua franca of the Hindi Belt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Marathi</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Marathi is an Indo-Aryan language spoken predominantly by people of Maharashtra in India.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>English</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>English is a West Germanic language first spoken in early medieval England, which has become the leading language of international discourse.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Contact Section -->
+        <div class="w3-padding-64 w3-content w3-text-#f8f8ff w3-center" id="contact" style="background-image: url('https://www.w3schools.com/w3images/contact-bg.jpg'); background-size: cover;">
+            <h2 class="w3-text-#f8f8ff">Contact Me</h2>
+            <hr style="width:500px" class="w3-opacity">
+            
+            <div class="w3-section w3-text-#f8f8ff">
+                <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> A/P-Nilaji, Tq-Raybag, Dist-Belagavi, Karnataka, INDIA (591217)</p>
+                <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +91 7026375395</p>
+                <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Email: <a href="mailto:akshaysalagare8@gmail.com" class="w3-text-light-grey">akshaysalagare8@gmail.com</a></p>
+                <p><i class="fa fa-linkedin fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> LinkedIn: <a href="https://www.linkedin.com/in/akshay-salagare-913066227/" class="w3-text-light-grey">Akshay's LinkedIn</a></p>
+                <p><i class="fa fa-github fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> GitHub: <a href="https://github.com/2k222" class="w3-text-light-grey">Akshay's GitHub</a></p>
+                <p><i class="fa fa-instagram fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Instagram: <a href="https://www.instagram.com/mr_akshay_031/" class="w3-text-light-grey">Akshay's Instagram</a></p>
+            </div>
+
+            <div class="w3-card-4 w3-round-large w3-white w3-padding-32 w3-margin-top w3-opacity-min">
+                <h3>Send me a message:</h3>
+                <form onsubmit="handleSubmit(event)">
+                    <p><input class="w3-input w3-border w3-padding-16 w3-margin-bottom" type="text" placeholder="Name" required name="Name"></p>
+                    <p><textarea class="w3-input w3-border w3-padding-16 w3-margin-bottom" placeholder="Message" required name="body" rows="4"></textarea></p>
+                    <p>
+						<button class="w3-button w3-black w3-padding-large w3-round-large w3-hover-light-grey" type="submit">
+                            <i class="fa fa-paper-plane"></i> SEND MESSAGE
+                        </button>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge w3-center">
+			<h1 class="signature-style">Thank You For Visiting My Portfolio</h1>
+		</footer>
+
+        <script>
+            function handleSubmit(event) {
+                event.preventDefault(); // Prevent form submission
+
+                const name = document.querySelector('input[name="Name"]').value;
+                const message = document.querySelector('textarea[name="body"]').value;
+                const encodedMessage = encodeURIComponent(`Name: ${name}\nMessage: ${message}`);
+
+                const email = "akshaysalagare8@gmail.com";
+                const subject = "Message from Portfolio";
+                const emailBody = encodedMessage.replace(/\n/g, '%0D%0A');
+                const emailLink = `mailto:${email}?subject=${subject}&body=${emailBody}`;
+                
+                const phoneNumber = "+917026375395";
+                const smsLink = `sms:${phoneNumber}?body=${encodedMessage}`;
+
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    // Mobile device - open the SMS app
+                    window.location.href = smsLink;
+                } else {
+                    // Desktop - open the email client
+                    window.location.href = emailLink;
+                }
+            }
+
+            function toggleDetails(projectId) {
+                const details = document.getElementById(projectId);
+                if (details.style.display === "none" || details.style.display === "") {
+                    details.style.display = "block";
+                } else {
+                    details.style.display = "none";
+                }
+            }
+
+            function highlightProject(projectId) {
+                const project = document.getElementById(projectId);
+                project.classList.add('blink');
+                setTimeout(function() {
+                    project.classList.remove('blink');
+                }, 3000); // Remove the blink class after 3 seconds
+            }
+		function toggleInfo(topic) {
+        const infoElement = document.getElementById(topic + '-info');
+        if (infoElement.style.display === 'none' || infoElement.style.display === '') {
+            infoElement.style.display = 'block';
+        } else {
+            infoElement.style.display = 'none';
+        }
+    }
+	</script>
+    </div>
+</body>
+</html>
+
